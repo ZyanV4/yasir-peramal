@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link rel="shortcut icon" href="./ydv-favicon.png" type="image/x-icon">
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Lilita+One&display=swap" rel="stylesheet">
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<title>YDv - Tebak 30 Angka</title>
+
+
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+		}
+
+		#background-video {
+			position: fixed;
+			top: 0;
+			left: 0;
+			min-width: 100%;
+			min-height: 100%;
+			z-index: -1;
+			object-fit: cover;
+		}
+
+		#overlay {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: rgb(0 0 0 / 60%);
+		}
+
+		.v-100 {
+			width: 100vw;
+			height: 100%;
+		}
+
+		.pop {
+			font-family: poppins, sans-serif;
+		}
+
+		.pikir {
+			color: #fff;
+			font-family: 'Lilita One', cursive;
+			font-size: 2.6rem;
+		}
+
+		.main {
+			height: 100vh;
+		}
+
+		.square {
+			height: 70vh;
+			border-radius: 20px;
+			text-align: center;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+
+		}
+
+		.up {
+			align-items: center;
+		}
+
+		.down {
+
+			height: 35vh;
+			align-items: center;
+
+		}
+
+		.numbers {
+
+			display: grid;
+			grid-template-columns: repeat(5, 1fr);
+			grid-gap: 10px;
+
+		}
+
+		.bg-number {
+			background: #090909;
+			border: 1px solid var(--warna-utama);
+			box-shadow: 0 0 1rem #00eeffa3;
+			transition: 0.4s;
+		}
+
+		@media(max-width: 1200px){
+
+			.numbers
+			{
+				grid-template-columns: repeat(5, 1fr);
+				grid-gap: 5px;
+			}
+
+		}
+
+		.number {
+
+			padding: 2vw;
+			text-align: center;
+			border-radius: 5px;
+
+		}
+
+		.buttons
+		{
+
+			padding: 10px;
+
+		}
+
+		span{
+			color: var(--warna-utama);
+		}
+
+		.btn {
+			color: #fff;
+			background: var(--dark) !important;
+			padding: 13px 28px;
+			transition: 0.4s;
+			border-radius: 5px;
+			border: 1px solid var(--warna-utama);
+			box-shadow: 0 0 1rem var(--warna-utama);
+			font-size: 17px;
+			font-family: "Raleway", sans-serif;
+			font-weight: 800 !important;
+			margin-top: 4rem;
+		}
+
+		.btn:hover {
+			background: var(--warna-utama) !important;
+			color: #fff !important;
+		}
+
+		.pop {
+			color: #fff !important;
+			font-size: 16px !important;
+		}
+
+		@media screen and (max-width: 500px) {
+			.pikir{font-size: 1.5rem !important;}
+			.btn{font-size: 13px !important;}
+			.number {padding: 3vw !important;}
+			.nmor {width: 14rem;margin-top: 0 !important;}
+			.logo-ydv {
+				width: 6.5rem !important;
+				height: 6.5rem !important;
+			}
+			.pop { font-size: 15px !important;}
+		}
+
+		.social-links {
+			margin-top: 2rem !important;
+		}
+
+		.social-links a {
+			font-size: 16px;
+			color: #fff;
+			margin: 0 3px;
+			border-radius: 50%;
+			width: 48px;
+			height: 48px;
+			transition: 0.3s;
+			border: 1px solid var(--warna-utama);
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			background: var(--dark);
+			box-shadow: 0 0 .5rem var(--warna-utama);
+		}
+
+		.social-links a i {
+			line-height: 0;
+		}
+
+		.social-links a:hover {
+			background: var(--warna-utama);
+			border-color: var(--warna-utama);
+		}
+
+		.logo-ydv {
+			background-image: url("logo.png");
+			width: 8rem;
+			height: 8rem;
+			background-size: cover;
+			background-repeat: no-repeat;
+			filter: contrast(2) invert(1) brightness(1.5);
+			position: absolute;
+ 			margin-top: -35rem;
+		}
+	</style>
+</head>
+<body>
+
+	<div id="overlay">
+		<video autoplay loop muted playsinline id="background-video">
+			<source src="BG-BULAN.mp4" type="video/mp4">
+		  </video>
+	<div class="container v-100 con p-5 main">
+		<div class="row" style="margin-top: 3rem;">
+			
+			<div class="col-md-3"></div>
+			<div class="col-md-6">
+				<div class="square p-4 d-flex" id="square">
+					<a href="https://wa.me/+62895630128912?text=Anjay🗿" class="logo-ydv"></a>
+					<h4 class="pikir nmor" style="margin-bottom: 2rem;margin-top: 5rem;">Apakah ada nomormu di sini?</h4>
+					<div class="numbers" id="card">
+						
+					</div>
+					<div class="buttons d-flex">
+						<div class="btn py-3 px-4 m-1" id="yes">Ya</div>
+						<div class="btn py-3 px-4 m-1" id="no">Tidak</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="col-md-3"></div>
+		</div>
+		<div class="social-links text-center">
+			<a href="https://youtube.com/@yashagoxd" class="twitter"><i class="bi bi-youtube"></i></a>
+			<a href="https://www.tiktok.com/@ydevzzvxy" class="facebook"><i class="bi bi-tiktok"></i></a>
+			<a href="https://instagram.com/ydevzzvxy" class="instagram"><i class="bi bi-instagram"></i></a>
+			<a href="https://wa.me/+62895630128912?text=Halo+bang" class="linkedin"><i class="bi bi-whatsapp"></i></a>
+		  </div>
+	</div>
+</div>
+	
+	<script src="js/play.js"></script>
+	<script src="js/bootstrap.js"></script>
+	<script>
+		document.addEventListener('contextmenu', event => event.preventDefault());
+	</script>
+</body>
+</html>
+
